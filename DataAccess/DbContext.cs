@@ -3,7 +3,7 @@ using DataAccess.Models;
 
 namespace DataAccess
 {
-    class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public ApplicationContext() 
             : base(@"data source=DESKTOP-D1BVDQU;Initial Catalog=MoneyAccounting;Integrated Security=True;")
