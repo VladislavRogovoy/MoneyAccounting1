@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202110251539096_trans_history1.designer.cs">
       <DependentUpon>202110251539096_trans_history1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110251712360_currency.cs" />
+    <Compile Include="Migrations\202110251712360_currency.designer.cs">
+      <DependentUpon>202110251712360_currency.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\TransactionsHistory.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110251539096_trans_history1.resx">
       <DependentUpon>202110251539096_trans_history1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110251712360_currency.resx">
+      <DependentUpon>202110251712360_currency.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

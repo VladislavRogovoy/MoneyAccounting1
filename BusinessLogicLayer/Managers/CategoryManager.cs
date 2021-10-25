@@ -21,7 +21,8 @@ namespace BusinessLogicLayer.Managers
             }
             var category = new Category()
             {
-                CategoryName = categoryName
+                CategoryName = categoryName,
+                Currency = "BYN"
             };
             _categoryRepository.Add(category);
             _categoryRepository.Save();
