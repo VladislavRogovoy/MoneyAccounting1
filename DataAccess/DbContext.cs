@@ -11,5 +11,6 @@ namespace DataAccess
             
         }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<TransactionsHistory> TransactionsHistories { get; set; }
     }
 }

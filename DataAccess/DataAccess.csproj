@@ -52,16 +52,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContext.cs" />
+    <Compile Include="Migrations\202110201820419_InitialCreate.cs" />
+    <Compile Include="Migrations\202110201820419_InitialCreate.designer.cs">
+      <DependentUpon>202110201820419_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110251536585_trans_history.cs" />
+    <Compile Include="Migrations\202110251536585_trans_history.designer.cs">
+      <DependentUpon>202110251536585_trans_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110251539096_trans_history1.cs" />
+    <Compile Include="Migrations\202110251539096_trans_history1.designer.cs">
+      <DependentUpon>202110251539096_trans_history1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\TransactionsHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Temp\IRepos\IRepository.cs" />
     <Compile Include="Temp\Repositories\CategoryRepository.cs" />
+    <Compile Include="Temp\Repositories\TransctionsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202110201820419_InitialCreate.resx">
+      <DependentUpon>202110201820419_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110251536585_trans_history.resx">
+      <DependentUpon>202110251536585_trans_history.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110251539096_trans_history1.resx">
+      <DependentUpon>202110251539096_trans_history1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
