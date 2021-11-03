@@ -6,7 +6,7 @@ namespace DataAccess.Models
     {
         public int Id { get; set; }
         public string CategoryName { get; set; }
-        public int Balance { get; set; }
+        public float Balance { get; set; }
         [MaxLength(3)]
         public string Currency { get; set; }
     }

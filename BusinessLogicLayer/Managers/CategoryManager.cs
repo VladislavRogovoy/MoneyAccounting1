@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
 using BusinessLogicLayer.Exceptions;
+using BusinessLogicLayer.Temp;
 using DataAccess.Models;
 using DataAccess.Temp.IRepos;
+using MoreLinq;
 
 namespace BusinessLogicLayer.Managers
 {
@@ -30,13 +32,12 @@ namespace BusinessLogicLayer.Managers
 
         public void DeleteCategory(int id)
         {
-            if (id == 0)
-            {
-                throw new CategoryException("id cant be 0");
-            }
-
             try
             {
+                if (id == 0)
+                {
+                    throw new CategoryException("id cant be 0");
+                }
                 _categoryRepository.Delete(id);
             }
             catch(Exception ex)
@@ -45,9 +46,14 @@ namespace BusinessLogicLayer.Managers
             }
         }
 
-        public Category[] GetAllCategories()
+        public Category[] GetAllCategories(string currency = null)
         {
             var categories = _categoryRepository.GetQuery().ToArray();
+            if (currency != null && currency != "BYN")
+            {
+                var converter = CurrencyConverter.GetConverter();
+                categories.ForEach(x => x.Balance = converter.Convert(x.Balance, currency));
+            }
             return categories;
         }
     }
