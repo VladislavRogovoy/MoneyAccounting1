@@ -68,6 +68,18 @@
     <Compile Include="Migrations\202110251712360_currency.designer.cs">
       <DependentUpon>202110251712360_currency.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111031554024_balance type.cs" />
+    <Compile Include="Migrations\202111031554024_balance type.designer.cs">
+      <DependentUpon>202111031554024_balance type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111031608344_cnange transactio histr.cs" />
+    <Compile Include="Migrations\202111031608344_cnange transactio histr.designer.cs">
+      <DependentUpon>202111031608344_cnange transactio histr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111031614047_trns.cs" />
+    <Compile Include="Migrations\202111031614047_trns.designer.cs">
+      <DependentUpon>202111031614047_trns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\TransactionsHistory.cs" />
@@ -92,6 +104,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110251712360_currency.resx">
       <DependentUpon>202110251712360_currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111031554024_balance type.resx">
+      <DependentUpon>202111031554024_balance type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111031608344_cnange transactio histr.resx">
+      <DependentUpon>202111031608344_cnange transactio histr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111031614047_trns.resx">
+      <DependentUpon>202111031614047_trns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace DataAccess.Temp.Repositories
 {
-    public class TransctionsRepository : IRepository<TransactionsHistory>
+    public class TransctionsRepository : IRepository<Transaction>
     {
         private ApplicationContext context;
 
@@ -15,25 +15,25 @@ namespace DataAccess.Temp.Repositories
             this.context = context;
         }
 
-        public void Add(TransactionsHistory transactionsHistory)
+        public void Add(Transaction transactionsHistory)
         {
-            context.TransactionsHistories.Add(transactionsHistory);
+            context.Transactions.Add(transactionsHistory);
         }
 
         public void Delete(int id)
         {
-            var tHistory = context.TransactionsHistories.Find(id);
-            context.TransactionsHistories.Remove(tHistory);
+            var tHistory = context.Transactions.Find(id);
+            context.Transactions.Remove(tHistory);
         }
 
-        public TransactionsHistory Find(int id)
+        public Transaction Find(int id)
         {
-            return context.TransactionsHistories.Find(id);
+            return context.Transactions.Find(id);
         }
 
-        public IQueryable<TransactionsHistory> GetQuery()
+        public IQueryable<Transaction> GetQuery()
         {
-            return context.TransactionsHistories;
+            return context.Transactions;
         }
 
         public void Save()
@@ -41,7 +41,7 @@ namespace DataAccess.Temp.Repositories
             context.SaveChanges();
         }
 
-        public void Update(TransactionsHistory transactionsHistory)
+        public void Update(Transaction transactionsHistory)
         {
             context.Entry(transactionsHistory).State = EntityState.Modified;
         }

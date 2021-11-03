@@ -10,8 +10,8 @@ namespace BusinessLogicLayer.Managers
 {
     public class THistoryManager
     {
-        private IRepository<TransactionsHistory> _tHistory;
-        public THistoryManager(IRepository<TransactionsHistory> tHistory)
+        private IRepository<Transaction> _tHistory;
+        public THistoryManager(IRepository<Transaction> tHistory)
         {
             _tHistory = tHistory;
         }

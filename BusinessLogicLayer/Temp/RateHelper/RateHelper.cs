@@ -10,7 +10,7 @@
 
         public int GetRate()
         {
-            return _getRateStrategy.GetRate();
+            return 0;
         }
     }
 }

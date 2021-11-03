@@ -5,12 +5,12 @@ namespace DataAccess
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext() 
-            : base(@"data source=DESKTOP-D1BVDQU;Initial Catalog=MoneyAccounting;Integrated Security=True;")
+        public ApplicationContext(string connectionString) 
+            : base(connectionString)
         {
             
         }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<TransactionsHistory> TransactionsHistories { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
     }
 }

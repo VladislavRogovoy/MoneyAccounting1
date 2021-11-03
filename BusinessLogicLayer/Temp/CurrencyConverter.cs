@@ -1,11 +1,7 @@
 ﻿using BusinessLogicLayer.Temp.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Temp
 {
@@ -18,7 +14,7 @@ namespace BusinessLogicLayer.Temp
 
         private static CurrencyConverter _converter;
 
-        private static CurrencyConverter GetConverter()
+        public static CurrencyConverter GetConverter()
         {
             if (_converter == null)
             {
@@ -28,27 +24,54 @@ namespace BusinessLogicLayer.Temp
             return _converter;
         }
 
-        private void GetRate(string toCurrency)
+        private float GetRate(string toCurrency)
         {
-
+            if (toCurrency == "USD" && BYNUSDRate != 0)
+            {
+                return BYNUSDRate;
+            }else if (toCurrency == "EUR" && BYNEURRate != 0)
+            {
+                return BYNEURRate;
+            }else if (toCurrency == "RUB" && BYNRUBRate != 0)
+            {
+                return BYNRUBRate;
+            }
+            
             var client = new HttpClient();
-            var USDResponse = client.GetAsync(String.Format("https://www.nbrb.by/api/exrates/rates/{0}?parammode=2", toCurrency.ToUpper()));
-            if (USDResponse.Result.StatusCode != System.Net.HttpStatusCode.OK)
+            var response = client.GetAsync(String.Format("https://www.nbrb.by/api/exrates/rates/{0}?parammode=2", toCurrency.ToUpper()));
+            if (response.Result.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new Exception("bad response of www.nbrb.by/api/exrates/rates/USD?parammode=2");
+                throw new Exception("bad response of www.nbrb.by/api/exrates/rates/?parammode=2");
             }
-            var USDResponseString = USDResponse.Result.Content.ReadAsStringAsync();
-            var USDRate = JsonConvert.DeserializeObject<CurrencyResponse>(USDResponseString.Result);
-            if (USDRate.CurScale > 1)
+            var responseString = response.Result.Content.ReadAsStringAsync();
+            var rate = JsonConvert.DeserializeObject<CurrencyResponse>(responseString.Result);
+            if (rate.CurScale > 1)
             {
-                USDRate.OfficialRate = USDRate.OfficialRate / USDRate.CurScale;
+                rate.OfficialRate = rate.OfficialRate / rate.CurScale;
             }
-            BYNUSDRate = USDRate.OfficialRate;
+
+            if (toCurrency == "USD")
+            {
+                BYNUSDRate = rate.OfficialRate;
+                return BYNUSDRate;
+            }
+            else if (toCurrency == "EUR")
+            {
+                BYNEURRate = rate.OfficialRate;
+                return BYNEURRate;
+            }
+            else if (toCurrency == "RUB")
+            {
+                BYNRUBRate = rate.OfficialRate;
+                return BYNRUBRate;
+            }
+            return 0;
         }
 
-        public void Convert(float[] prices, string toCurrency)
+        public float Convert(float price, string toCurrency)
         {
-            
+            var rate = GetRate(toCurrency);
+            return price / rate;
         }
     }
 }
